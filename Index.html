@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Restaurant Website</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./Style.css">
   <script src="ModalButton.js"></script>
   <script src="form-validation.js"></script>
   <script src="OnlineOrderValidation.js"></script>
 </head>
+
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="#hero">Home</a></li>
         <li><a href="#menu">Menu</a></li>
-        <li><a href="#myModal">Reservations</a></li>
+        <li><a href="#hero">Reservations</a></li>
         <li><a href="#order-online">Order Online</a></li>
         <li><a href="#contact">Contact Us</a></li>
       </ul>
@@ -22,153 +24,165 @@
   </header>
 
   <main>
-	<section id="hero">
-		<h1>Welcome to Our Restaurant</h1>
-		<p>Our mission is to serve delicious food and provide excellent service to our customers.</p>
-	</section>
+    <section id="hero">
+      <h1>Welcome to Our Restaurant</h1>
+      <p>Our mission is to serve delicious food and provide excellent service to our customers.</p>
+    </section>
   </main>
-  
-  <button class="modal-button" onclick="document.getElementById('myModal').style.display='block'">Make a Reservation</button>
 
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-    <div class="reservation-container">
-      <form>
+  <button class="modal-button" onclick="document.getElementById('myModal').style.display='block'">Make a
+    Reservation</button>
 
-    <h2>Make a Reservation</h2>
-    <p>Fill out the form below to make a reservation.</p>
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="phone">Phone:</label>
-      <input type="tel" id="phone" name="phone" required>
-    </div>
-      <div class="form-group">
-        <label for="Reservation-time">Reservation Date / Time:</label>
-        <input type="datetime-local" id="Reservation-time" name="Reservation-time" required>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+      <div class="reservation-container">
+        <form action="/reservation" id="reservation-form" method="post">
+
+          <h2>Make a Reservation</h2>
+          <p>Fill out the form below to make a reservation.</p>
+          <div class="form-group">
+            <label for="name1">Name:</label>
+            <input type="text" id="name1" name="name1" required>
+          </div>
+          <div class="form-group">
+            <label for="email1">Email:</label>
+            <input type="email" id="email1" name="email1" required>
+          </div>
+          <div class="form-group">
+            <label for="phone1">Phone:</label>
+            <input type="tel" id="phone1" name="phone1" required>
+          </div>
+          <div class="form-group">
+            <label for="reservationTime">Reservation Date / Time:</label>
+            <input type="datetime-local" id="reservationTime" name="reservationTime" required>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests:</label>
+            <select id="guests" name="guests" required>
+              <option value="">Select Number of Guests</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <button type="submit" value="submit" onclick="submit">Submit</button>
+        </form>
       </div>
-    <div class="form-group">
-      <label for="guests">Number of Guests:</label>
-      <select id="guests" name="guests" required>
-        <option value="">Select Number of Guests</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
     </div>
-    <button type="submit">Submit</button>
+  </div>
+
+
+  <section id="menu">
+    <h2>Our Menu</h2>
+    <p>Check out our selection of delicious dishes!</p>
+    <ul>
+      <li class="menu-item" data-menu-name="Appetizers">
+        <a href="#order-online">
+          <img src="./images/Appetizers.jpeg" alt="Appetizers">
+          <h3>Appetizers</h3>
+          <p>Start your meal off right with one of our delicious appetizers.</p>
+        </a>
+      </li>
+      <li class="menu-item" data-menu-name="Entrees">
+        <a href="#order-online">
+          <img src="./images/Entree.jpg" alt="Entrees">
+          <h3>Entrees</h3>
+          <p>From our famous burgers to our savory pasta dishes, we have something for everyone.</p>
+        </a>
+      </li>
+      <li class="menu-item" data-menu-name="Desserts">
+        <a href="#order-online">
+          <img src="./images/Desserts.png" alt="Desserts">
+          <h3>Desserts</h3>
+          <p>Indulge your sweet tooth with one of our delicious desserts.</p>
+        </a>
+      </li>
+      <li class="menu-item" data-menu-name="Drinks">
+        <a href="#order-online">
+          <img src="./images/Drinks.jpg" alt="Drinks">
+          <h3>Drinks</h3>
+          <p>Quench your thirst with our selection of refreshing beverages.</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+
+  <section id="order-online">
+    <h2>Order Online</h2>
+    <p>Choose your favorite dishes and place your order now!</p>
+
+    <div class="order-online-container">
+      <form action="/order" method="POST">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <input type="text" id="address" name="address" required>
+        </div>
+
+        <div class="form-group">
+          <label for="deliveryTime">Delivery Date / Time:</label>
+          <input type="datetime-local" id="delivery-time" name="deliveryTime" required>
+        </div>
+
+        <div class="form-group">
+          <label for="orderDetails">Order Details:</label>
+          <textarea readonly id="order-details" name="orderDetails" placeholder="Please Select Menu Above" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" value="Submit">Place Order</button>
+        </div>
       </form>
     </div>
-  </div>
-</div>
-  
-  
-<section id="menu">
-  <h2>Our Menu</h2>
-  <p>Check out our selection of delicious dishes!</p>
-  <ul>
-    <li>
-      <a href="#">
-        <img src="https://via.placeholder.com/300x200.png?text=Appetizers" alt="Appetizers">
-        <h3>Appetizers</h3>
-        <p>Start your meal off right with one of our delicious appetizers.</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="https://via.placeholder.com/300x200.png?text=Entrees" alt="Entrees">
-        <h3>Entrees</h3>
-        <p>From our famous burgers to our savory pasta dishes, we have something for everyone.</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="https://via.placeholder.com/300x200.png?text=Desserts" alt="Desserts">
-        <h3>Desserts</h3>
-        <p>Indulge your sweet tooth with one of our delicious desserts.</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <img src="https://via.placeholder.com/300x200.png?text=Drinks" alt="Drinks">
-        <h3>Drinks</h3>
-        <p>Quench your thirst with our selection of refreshing beverages.</p>
-      </a>
-    </li>
-  </ul>
-</section>
+  </section>
 
-
-<section id="order-online">
-  <h2>Order Online</h2>
-  <p>Choose your favorite dishes and place your order now!</p>
-
-  <div class="order-online-container">
-    <form>
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
-      </div>
-
-      <div class="form-group">
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" required>
-      </div>
-
-      <div class="form-group">
-        <label for="delivery-time">Delivery Date / Time:</label>
-        <input type="datetime-local" id="delivery-time" name="delivery-time" required>
-      </div>
-
-      <div class="form-group">
-        <label for="order-details">Order Details:</label>
-        <textarea id="order-details" name="order-details" required></textarea>
-      </div>
-
-      <div class="form-group">
-        <button type="submit">Place Order</button>
-      </div>
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form action="/contact" method="post" id="contactForm">
+      <label for="name2">Name</label>
+      <input type="text" id="name2" name="name2" required>
+      <label for="email2">Email</label>
+      <input type="email" id="email2" name="email2" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit" value="submit">Send</button>
     </form>
-  </div>
-</section>
+  </section>
 
-<section class="contact" id="contact">
-  <h2>Contact Us</h2>
-  <form action="#">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-    <label for="message">Message</label>
-    <textarea id="message" name="message" required></textarea>
-    <button type="submit">Send</button>
-  </form>
-</section>
+  <script>
+    // Get all the menu items
+      var menuItems = document.querySelectorAll('.menu-item');
 
+      // Add a click event listener to each menu item
+      menuItems.forEach(function (menuItem) {
+        menuItem.addEventListener('click', function () {
+          // Get the name of the menu item from the "data-menu-name" attribute
+          var menuName = this.getAttribute('data-menu-name');
 
-
-
-
-
-
+          // Update the value of the order detail input with the name of the menu
+          var orderDetailInput = document.getElementById('order-details');
+          orderDetailInput.value = menuName;
+        });
+      });
+  </script>
 </body>
+
 </html>

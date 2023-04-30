@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 
-form.addEventListener('submit', function(event) {
-  event.preventDefault(); // prevent default form submission
+form.addEventListener('submit', function(e) {
+  e.preventDefault(); // prevent default form submission
 
   // validate form fields
   const name = form.querySelector('#name').value;

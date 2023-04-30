@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'password',
-  database: 'myDatabase'
+  password: 'ENTER PASSWORD',
+  database: 'ENTER DATABASE NAME',
 });
 
 connection.connect((err) => {
@@ -23,14 +23,9 @@ connection.connect((err) => {
 });
 
 // Define endpoints
-app.get('/', (req, res) => {
-    res.send('Hello, world!');
+app.get('/', function(req, res){
+    res.sendFile(__dirname+'/Index.html');
 });
-
-app.listen(3000, () => {
-    console.log('Server started on port 3000');
-});
-
 
 app.get('/products', (req, res) => {
     db.query('SELECT * FROM products', function(err, results) {
@@ -100,5 +95,5 @@ app.delete('/cart/:id', (req, res) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+console.log(`Server running on port ${port}`);
 });
